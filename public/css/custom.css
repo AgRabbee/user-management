@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'PT Sans Narrow';
+    src: url('/fonts/PTSansNarrow-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    font-family: 'PT Sans Narrow', sans-serif !important;
+    letter-spacing: 1.5px;
+}
+#profile_img{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+}
