@@ -44,7 +44,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('ahmadis', function (Blueprint $table) {
+        Schema::table('persons', function (Blueprint $table) {
             $table->dropIndex('user_id');
             $table->dropIndex('name');
             $table->dropIndex('spouse_user_id');

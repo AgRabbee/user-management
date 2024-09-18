@@ -81,7 +81,7 @@
                 <!-- Welcome card -->
                 <div class="col-md-12 col-lg-12">
                     <div class="card mb-4">
-                        <h5 class="card-header">Import Ahmadi from Excel</h5>
+                        <h5 class="card-header">Import Person from Excel</h5>
                         <div class="divider my-0">
                             <div class="divider-text">
                                 <i class="mdi mdi-star-outline"></i>

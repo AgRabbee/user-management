@@ -206,7 +206,7 @@ class PersonController extends Controller
         $blood_groups = $configData['BLOOD_GROUPS'];
         $marital_statuses = $configData['MARITAL_STATUS'];
         $genders = $configData['GENDERS'];
-        $person_types = $configData['TYPE_OF_AHMADI'];
+        $person_types = $configData['TYPE_OF_PERSON'];
         $enquiries_texts = $configData['ENQUIRIES_TEXT'];
 
         $stylesheet = file_get_contents(public_path("css/single_report.css"));

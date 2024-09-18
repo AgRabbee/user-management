@@ -24,7 +24,7 @@ Route::prefix('person')->middleware('auth')->group(function(){
     Route::get('/create',[PersonController::class, 'new'])->name('person.new');
     Route::post('/store',[PersonController::class, 'store'])->name('person.store');
     Route::get('/{id}/edit',[PersonController::class, 'edit'])->name('person.edit');
-    Route::post('/find',[PersonController::class, 'ahmadiSrchById'])->name('srch_user_by_id');
+    Route::post('/find',[PersonController::class, 'personSrchById'])->name('srch_user_by_id');
     Route::put('/{id}',[PersonController::class,'update'])->name('person.update');
 
     Route::get('truncate', [PersonController::class, 'truncate']);

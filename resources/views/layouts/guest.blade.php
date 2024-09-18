@@ -26,5 +26,20 @@
                 {{ $slot }}
             </div>
         </div>
+
+        <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+        <script>
+            $(document).ready(function(){
+                $('#adminLogInBtn').click(function() {
+                    $('#email').val('system@admin.com');
+                    $('#password').val('123456');
+                });
+                $('#userLogInBtn').click(function() {
+                    $('#email').val('system@user.com');
+                    $('#password').val('123456');
+                });
+            });
+
+        </script>
     </body>
 </html>

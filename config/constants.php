@@ -4,7 +4,7 @@ return [
     'SMS_API_URL' => env('SMS_API_URL'),
     'INSTITUTE_ID' => env('INSTITUTE_ID'),
     'MARITAL_STATUS' => [0 => 'unmarried', 1 => 'married', 2 => 'divorced', 3 => 'separate'],
-    'TYPE_OF_AHMADI' => [1 => 'By Birth', 2 => 'By Bayat'],
+    'TYPE_OF_PERSON' => [1 => 'By Birth', 2 => 'By Bayat'],
     'ACADEMIC_INFO_LIST' => ['degree_name', 'subject_name', 'institution_name', 'institution_address', 'passing_year'],
     'PROFESSIONAL_INFO_LIST' => ['profession', 'job_title', 'company_name', 'company_address'],
     'QUESTION_TYPES' => [1 => 'taleem', 2 => 'tarbiyyat', 3 => 'isayyat'],

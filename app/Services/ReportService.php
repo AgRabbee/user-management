@@ -23,7 +23,7 @@ class ReportService
 
 //            'persons.academic_info' => 'academic_info',
 //            'persons.professional_info' => 'professional_info',
-//            'persons.reference_ahmadi_id' => 'reference_ahmadi_id',
+//            'persons.reference_person_id' => 'reference_person_id',
 //            'custom.spouse_name' => 'Spouse Name',
 //            'persons.is_head_of_family' => 'is_head_of_family',
 //            'persons.family_head_user_id' => 'family_head_user_id',
@@ -46,8 +46,8 @@ class ReportService
                 $data[$key]['persons.contact_no'] = implode(', ', json_decode($dt['persons.contact_no'], true));
             }
 
-            if (array_key_exists('persons.type_of_ahmadi', $dt)) {
-                $data[$key]['persons.type_of_ahmadi'] = ucfirst($configData['TYPE_OF_AHMADI'][$dt['persons.type_of_ahmadi']]);
+            if (array_key_exists('persons.type_of_person', $dt)) {
+                $data[$key]['persons.type_of_person'] = ucfirst($configData['TYPE_OF_PERSON'][$dt['persons.type_of_person']]);
             }
 
             if($export && array_key_exists('persons.father_is_dead', $dt)){

@@ -17,11 +17,11 @@ class PersonUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $ahmadi_id = Encryption::decodeId($this->route('id'));
+        $person_id = Encryption::decodeId($this->route('id'));
         return [
             'user_id'                  => [
                 'required',
-                Rule::unique(Person::class, 'user_id')->ignore($ahmadi_id),
+                Rule::unique(Person::class, 'user_id')->ignore($person_id),
             ],
             'name'                     => ['required', 'string'],
             'father_name'              => ['nullable', 'string'],
