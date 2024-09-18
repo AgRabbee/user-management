@@ -34,18 +34,18 @@
                                 <tbody class="table-border-bottom-0">
 
                                 @if($data)
-                                    @foreach($data as $index=>$ahmadi)
+                                    @foreach($data as $index=>$person)
                                         <tr>
                                             <th scope="row">{{ $index+1 }}</th>
                                             @foreach($tbl_columns as $key=> $column)
-                                                <td style="{{empty($ahmadi[$key]) ? 'background: #f4836fe3; color: #fff;' : ''}}">{{ !empty($ahmadi[$key]) ? $ahmadi[$key] : 'N/A'
+                                                <td style="{{empty($person[$key]) ? 'background: #f4836fe3; color: #fff;' : ''}}">{{ !empty($person[$key]) ? $person[$key] : 'N/A'
                                                 }}</td>
                                             @endforeach
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr class="text-center">
-                                        <td colspan="5">No available Ahmadi.</td>
+                                        <td colspan="5">No available Person.</td>
                                     </tr>
                                 @endif
                                 </tbody>

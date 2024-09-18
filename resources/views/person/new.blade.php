@@ -505,8 +505,8 @@
             /* waqf_e_nou radio ends */
 
             /* ### type of person radio starts */
-            $('.type_of_ahmadi_inp').change(function () {
-                let selectedVal = $("input:radio.type_of_ahmadi_inp:checked").val();
+            $('.type_of_person_inp').change(function () {
+                let selectedVal = $("input:radio.type_of_person_inp:checked").val();
                 if (selectedVal == 1) {
                     $('#year_of_bayat_inp').hide();
                 } else {
@@ -530,14 +530,14 @@
 
 
             $("#ref_user_id_srch").click(function () {
-                let reference_ahmadi_id = $('#reference_ahmadi_id').val();
-                if (!reference_ahmadi_id || reference_ahmadi_id === 0) {
+                let reference_person_id = $('#reference_person_id').val();
+                if (!reference_person_id || reference_person_id === 0) {
                     alert('Please enter reference person user id.');
                     return;
                 }
                 $('#referrer_srch_text').show();
                 try {
-                    let userData = userSearchById(reference_ahmadi_id);
+                    let userData = userSearchById(reference_person_id);
                     userData
                         .then((name) => {
                             $('#referred_by').val(name);
