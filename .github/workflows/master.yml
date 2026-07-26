@@ -10,11 +10,17 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
-
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: 📦 Prepare deploy folder
+        run: |
+          mkdir deploy
+          rsync -av --exclude='.git' --exclude='tests' --exclude='storage/logs' --exclude='storage/framework/cache' --exclude='storage/framework/sessions' --exclude='storage/framework/views' --exclude='node_modules' --exclude='.env' ./ deploy/
+      - name: 🚀 Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ftp.rabbee.com
-          username: ${{ secrets.PORTFOLIO_FTP_USERNAME }}
-          password: ${{ secrets.PORTFOLIO_FTP_PASSWORD }}
-          server-dir: /user-management.rabbee.com/
+          username: ${{ secrets.UM_SSH_USERNAME }}
+          server: ${{ secrets.UM_SSH_SERVER }}
+          port: ${{ secrets.UM_SSH_PORT }}
+          ssh_private_key: ${{ secrets.UM_SSH_PRIVATE_KEY }}
+          local_path: "./deploy/*"
+          remote_path: "/home/rabbeeco/user-management.rabbee.com/"
+          sftp_only: true

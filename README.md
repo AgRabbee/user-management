@@ -1,66 +1,121 @@
-<p align="center"><a href="//laravel.com" target="_blank"><img src="//raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# User Management
 
-<p align="center">
-<a href="//github.com/laravel/framework/actions"><img src="//github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="//packagist.org/packages/laravel/framework"><img src="//img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="//packagist.org/packages/laravel/framework"><img src="//img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="//packagist.org/packages/laravel/framework"><img src="//img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel web application for managing member (person) records within an organisation. It provides authenticated CRUD management of member profiles, bulk import from Excel, PDF profile reports, and configurable ad-hoc reporting with Excel export.
 
-## About Laravel
+## Key Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Authentication**: registration, login, logout, email verification, password reset and password confirmation, built on Laravel Breeze.
+- **User profile management**: update profile information, change password, delete account.
+- **Member (person) records management**:
+  - List members in a searchable, sortable, paginated table (server-side processing via Yajra DataTables).
+  - Create and edit member records, including personal details, contact numbers, blood group, marital status, present/permanent address, academic information and professional information.
+  - Track family relationships: spouse and head-of-family links between member records.
+  - Look up a member by user ID (used for spouse/family-head selection).
+- **Bulk import**: upload an Excel file (`.xlsx`/`.xls`) to import or update member records in bulk.
+- **PDF report**: generate a single-member profile report as a PDF (via mPDF), viewable in the browser.
+- **Custom reports**:
+  - Maintain a list of predefined SQL-backed reports.
+  - Generate a report with a user-selected subset of columns and view the results as an HTML table.
+  - Export a generated report to an Excel file and download it.
+  - Edit report metadata (title, type, active/inactive status).
+- **API**: a single Sanctum-authenticated endpoint that returns the current user.
 
-- [Simple, fast routing engine](//laravel.com/docs/routing).
-- [Powerful dependency injection container](//laravel.com/docs/container).
-- Multiple back-ends for [session](//laravel.com/docs/session) and [cache](//laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](//laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](//laravel.com/docs/migrations).
-- [Robust background job processing](//laravel.com/docs/queues).
-- [Real-time event broadcasting](//laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Backend**
+- PHP 8.1
+- Laravel Framework 10
+- Laravel Sanctum (API authentication)
+- Laravel Breeze (authentication scaffolding)
+- Laravel Tinker
+- Guzzle HTTP client
+- Yajra Laravel DataTables (Oracle package) for server-side table processing
+- Maatwebsite Excel (import/export of `.xlsx`/`.xls` files)
+- mPDF (PDF generation)
 
-## Learning Laravel
+**Frontend build tooling**
+- Vite
+- Tailwind CSS (with `@tailwindcss/forms`)
+- Alpine.js
+- Axios
+- PostCSS / Autoprefixer
 
-Laravel has the most extensive and thorough [documentation](//laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The member and reporting pages use a separate Bootstrap-based admin template whose assets (CSS/JS, DataTables, Select2, SweetAlert2, Toastr, Dropzone) are served as static files from `public/assets` and `public/plugins` rather than through the npm build.
 
-You may also try the [Laravel Bootcamp](//bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Database**
+- MySQL (as configured in `.env.example`)
 
-If you don't feel like reading, [Laracasts](//laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Development and testing**
+- PHPUnit
+- Laravel Pint
+- Laravel Sail
+- Mockery, FakerPHP, Spatie Laravel Ignition, Collision
 
-## Laravel Sponsors
+## Screenshots
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](//partners.laravel.com).
+<!-- Add screenshots of the application here, for example: login page, member list, member form, and generated PDF/Excel reports. -->
 
-### Premium Partners
+## Installation and Setup
 
-- **[Vehikl](//vehikl.com/)**
-- **[Tighten Co.](//tighten.co)**
-- **[WebReinvent](//webreinvent.com/)**
-- **[Kirschbaum Development Group](//kirschbaumdevelopment.com)**
-- **[64 Robots](//64robots.com)**
-- **[Curotec](//www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](//cyber-duck.co.uk)**
-- **[DevSquad](//devsquad.com/hire-laravel-developers)**
-- **[Jump24](//jump24.co.uk)**
-- **[Redberry](//redberry.international/laravel/)**
-- **[Active Logic](//activelogic.com)**
-- **[byte5](//byte5.de)**
-- **[OP.GG](//op.gg)**
+### Requirements
 
-## Contributing
+- PHP 8.1 or higher
+- Composer
+- Node.js and npm
+- MySQL
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](//laravel.com/docs/contributions).
+### Steps
 
-## Code of Conduct
+1. Clone the repository and move into the project directory.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](//laravel.com/docs/contributions#code-of-conduct).
+2. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
 
-## Security Vulnerabilities
+3. Install Node dependencies:
+   ```bash
+   npm install
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Copy the example environment file and generate an application key:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## License
+5. Configure the database connection in `.env` (MySQL by default):
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](//opensource.org/licenses/MIT).
+6. Run the database migrations. A seeder is also available to populate initial users and reports:
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
+
+7. Build front-end assets:
+   ```bash
+   npm run dev
+   ```
+   or, for a production build:
+   ```bash
+   npm run build
+   ```
+
+8. Start the local development server:
+   ```bash
+   php artisan serve
+   ```
+
+The application will be available at the URL printed by `artisan serve` (by default `http://localhost:8000`).
+
+## About This Project
+
+This project demonstrates a member/community record-keeping system built with Laravel. It illustrates authenticated CRUD workflows, server-side data tables, bulk data import from spreadsheets, PDF document generation, and a configurable ad-hoc reporting module with Excel export.
